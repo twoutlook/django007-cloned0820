@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+ <title>{{ page_title }}</title>    
+   
+<link rel="stylesheet" type="text/css" href="{% static 'app001/style.css' %}" />
+
+</head>
+<body>
+    <div class="header">
+                                
+    <div class="logo"><img src="/static/app001/images/logo.jpg" alt="logo" title="logo"/></div>
+    </div>
+    <div class='info'>
+        
+<h1>    <a href='..'>app001</a> |
+{{ page_title }}
+    
+</h1>
+                                                        
+{% if item_list %}
+    <table>
+    <tr>
+    <th>編號</th>
+    <th>客戶</th>
+    <th>品名</th>
+    <th>計劃交貨日期</th>
+    <th>客戶需求數</th>
+    <th>實際出貨數</th>
+    <th>延交數量</th>
+    
+ 
+    </tr>
+    
+    {% for item in item_list %}
+    <tr>
+    <th>{{ item.field1 }}</th>
+    
+    <td>{{ item.field2 }}</td>
+    <td>{{ item.field3 }}</td>
+    <td>{{ item.field4 }}</td>
+    <td>{{ item.field5 }}</td>
+    <td>{{ item.field6 }}</td>
+    <td>{{ item.field7 }}</td>
+    </tr>
+    {% endfor %}
+
+    </table>
+{% else %}
+    <p>無資料顯示，需要權限並<mark><a href='../../admin'>登入</a></mark>才能查看。</p>
+{% endif %}
+
+    </div>
+</body>
+</html>
+
+
+
+
