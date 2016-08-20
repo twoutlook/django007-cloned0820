@@ -1,19 +1,24 @@
-
-
-{% extends 'blog/base.html' %}
-
-{% block content %}
-    <div class="post">
-        {% if post.published_date %}
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-        {% endif %}
-{% if user.is_authenticated %}
-     <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-{% endif %}        
-        <h1>{{ post.title }}</h1>
-        <h1>{{ post.brief }}</h1>
-        <p>{{ post.text|linebreaksbr }}<hr></p>
+{% extends 'blog/base.html' %} {% block content %}
+<div class="post">
+    {% if post.published_date %}
+    <div class="date">
+        {{ post.published_date }}
     </div>
+    {% endif %} 
+    
+    
+    
+    {% if user.is_authenticated %}
+    
+    <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a> {% endif %}
+    <h1>{{ post.title }}</h1>
+    <h1>{{ post.brief }}</h1>
+<table>
+<tr><td>結構</td><td>格林柱</td><td>{{post.r03c3}}</td><td>{{post.r03c4}}</td><td>{{post.r03c5}}</td><td>{{post.r03c6}}</td><td colspan="2">{{post.r03c7}}</td></tr>
+    
+</table>
+
+
+
+</div>
 {% endblock %}

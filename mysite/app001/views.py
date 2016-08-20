@@ -4,7 +4,7 @@ from django.template import loader
 from django.shortcuts import get_object_or_404, render
 # from django.shortcuts import render
 
-from .forms import SpecForm
+from .forms import Item001Form
 
 from django.conf import settings
 from django.shortcuts import redirect
@@ -137,17 +137,17 @@ def item004(request):
     context = {'page_title':'item004-富甲-欠料','item_list': item_list}
     return render(request, 'app001/item002.html', context)     
 
-def spec_new(request):
+
+def item001_edit(request, pk):
+    post = get_object_or_404(Item001, pk=pk)
     if request.method == "POST":
-        form = SpecForm(request.POST)
+        form = Item001Form(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
             # post.author = request.user
             # post.published_date = timezone.now()
             post.save()
-            return redirect('spec_detail', pk=spec.pk)
+            return redirect('item001detail', pk=post.pk)
     else:
-        form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form})
-
-
+        form = Item001Form(instance=post)
+    return render(request, 'app001/item001_edit.html', {'form': form})

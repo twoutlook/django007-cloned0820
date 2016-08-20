@@ -6,7 +6,16 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
     brief = models.CharField(default='', max_length=200)
-    text = models.TextField()
+    
+    r03c3 = models.CharField(default=".",max_length=99,verbose_name="格林柱-零件")
+    r03c4 = models.CharField(default=".",max_length=99,verbose_name="格林柱-進度一")
+    r03c5 = models.CharField(default=".",max_length=99,verbose_name="格林柱-進度二")
+    r03c6 = models.CharField(default=".",max_length=99,verbose_name="格林柱-進度三")
+    r03c7 = models.CharField(default=".",max_length=99,verbose_name="格林柱-備註說明")
+   
+    
+    
+    
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(
